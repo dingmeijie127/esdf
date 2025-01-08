@@ -1,0 +1,2 @@
+fast_planner_sdf_map
+-DCATKIN_DEVEL_PREFIX=/home/dmj/study/esdf_ws/devel -DCMAKE_INSTALL_PREFIX=/home/dmj/study/esdf_ws/install -G Unix Makefiles
