@@ -3,8 +3,10 @@ project(fast_planner_sdf_map)
 
 ## Compile as C++11, supported in ROS Noetic
 ## 使用C++14标准
+set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp

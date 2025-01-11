@@ -2,13 +2,13 @@
   <node name="sdf_map_node" pkg="fast_planner_sdf_map" type="sdf_map_node" output="screen">
     <!-- Map parameters -->
     <param name="sdf_map/resolution" value="0.1" />
-    <param name="sdf_map/map_size_x" value="50.0" />
-    <param name="sdf_map/map_size_y" value="50.0" />
-    <param name="sdf_map/map_size_z" value="10.0" />
-    <param name="sdf_map/local_update_range_x" value="5.0" />
-    <param name="sdf_map/local_update_range_y" value="5.0" />
-    <param name="sdf_map/local_update_range_z" value="2.0" />
-    <param name="sdf_map/obstacles_inflation" value="0.5" />
+    <param name="sdf_map/map_size_x" value="40.0" />
+    <param name="sdf_map/map_size_y" value="40.0" />
+    <param name="sdf_map/map_size_z" value="5.0" />
+    <param name="sdf_map/local_update_range_x" value="5.5" />
+    <param name="sdf_map/local_update_range_y" value="5.5" />
+    <param name="sdf_map/local_update_range_z" value="4.5" />
+    <param name="sdf_map/obstacles_inflation" value="0.099" />
     
     <!-- Camera parameters -->
     <param name="sdf_map/fx" value="517.0" />
@@ -48,8 +48,9 @@
     
     <!-- Remap topics to match the Bag file -->
     <remap from="/sdf_map/depth" to="/depth/image_raw" />
-    <remap from="/sdf_map/pose" to="/camera/pose" />
-    <remap from="/sdf_map/cloud" to="/camera/depth/points" />
+<!--     <remap from="/sdf_map/pose" to="/camera/pose" /> -->
+<!--     <remap from="/sdf_map/cloud" to="/pcl_render_node/cloud" /> -->
+<!--     <remap from="/sdf_map/odom" to="/state_ukf/odom" /> -->
     <remap from="/sdf_map/odom" to="/gps" />
   </node>
 </launch>

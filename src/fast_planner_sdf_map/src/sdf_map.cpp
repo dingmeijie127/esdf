@@ -800,8 +800,8 @@ void SDFMap::clearAndInflateLocalMap() {
 void SDFMap::visCallback(const ros::TimerEvent& /*event*/) {
   publishMap();
   publishMapInflate(false);
-  // publishUpdateRange();
-  // publishESDF();
+  publishUpdateRange();
+  publishESDF();
 
   // publishUnknown();
   // publishDepth();
@@ -929,7 +929,7 @@ void SDFMap::cloudCallback(const sensor_msgs::PointCloud2ConstPtr& img) {
   max_x = mp_.map_min_boundary_(0);
   max_y = mp_.map_min_boundary_(1);
   max_z = mp_.map_min_boundary_(2);
-
+  ros::Time start_time = ros::Time::now();
   for (size_t i = 0; i < latest_cloud.points.size(); ++i) {
     pt = latest_cloud.points[i];
     p3d(0) = pt.x, p3d(1) = pt.y, p3d(2) = pt.z;
@@ -984,7 +984,9 @@ void SDFMap::cloudCallback(const sensor_msgs::PointCloud2ConstPtr& img) {
 
   boundIndex(md_.local_bound_min_);
   boundIndex(md_.local_bound_max_);
-
+  ros::Time end_time = ros::Time::now();
+  ros::Duration duration = end_time - start_time;
+  std::cout<<" duration is : "<<duration.toSec()<<std::endl;
   md_.esdf_need_update_ = true;
 }
 
